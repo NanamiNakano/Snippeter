@@ -21,20 +21,6 @@ type SnippetCreate struct {
 	hooks    []Hook
 }
 
-// SetLanguage sets the "language" field.
-func (sc *SnippetCreate) SetLanguage(s string) *SnippetCreate {
-	sc.mutation.SetLanguage(s)
-	return sc
-}
-
-// SetNillableLanguage sets the "language" field if the given value is not nil.
-func (sc *SnippetCreate) SetNillableLanguage(s *string) *SnippetCreate {
-	if s != nil {
-		sc.SetLanguage(*s)
-	}
-	return sc
-}
-
 // SetContent sets the "content" field.
 func (sc *SnippetCreate) SetContent(s string) *SnippetCreate {
 	sc.mutation.SetContent(s)
@@ -96,10 +82,6 @@ func (sc *SnippetCreate) ExecX(ctx context.Context) {
 
 // defaults sets the default values of the builder before save.
 func (sc *SnippetCreate) defaults() {
-	if _, ok := sc.mutation.Language(); !ok {
-		v := snippet.DefaultLanguage
-		sc.mutation.SetLanguage(v)
-	}
 	if _, ok := sc.mutation.CreatedAt(); !ok {
 		v := snippet.DefaultCreatedAt()
 		sc.mutation.SetCreatedAt(v)
@@ -108,9 +90,6 @@ func (sc *SnippetCreate) defaults() {
 
 // check runs all checks and user-defined validators on the builder.
 func (sc *SnippetCreate) check() error {
-	if _, ok := sc.mutation.Language(); !ok {
-		return &ValidationError{Name: "language", err: errors.New(`ent: missing required field "Snippet.language"`)}
-	}
 	if _, ok := sc.mutation.Content(); !ok {
 		return &ValidationError{Name: "content", err: errors.New(`ent: missing required field "Snippet.content"`)}
 	}
@@ -162,10 +141,6 @@ func (sc *SnippetCreate) createSpec() (*Snippet, *sqlgraph.CreateSpec) {
 	if id, ok := sc.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = &id
-	}
-	if value, ok := sc.mutation.Language(); ok {
-		_spec.SetField(snippet.FieldLanguage, field.TypeString, value)
-		_node.Language = value
 	}
 	if value, ok := sc.mutation.Content(); ok {
 		_spec.SetField(snippet.FieldContent, field.TypeString, value)

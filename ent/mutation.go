@@ -35,7 +35,6 @@ type SnippetMutation struct {
 	op            Op
 	typ           string
 	id            *uuid.UUID
-	language      *string
 	content       *string
 	created_at    *time.Time
 	clearedFields map[string]struct{}
@@ -148,42 +147,6 @@ func (m *SnippetMutation) IDs(ctx context.Context) ([]uuid.UUID, error) {
 	}
 }
 
-// SetLanguage sets the "language" field.
-func (m *SnippetMutation) SetLanguage(s string) {
-	m.language = &s
-}
-
-// Language returns the value of the "language" field in the mutation.
-func (m *SnippetMutation) Language() (r string, exists bool) {
-	v := m.language
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldLanguage returns the old "language" field's value of the Snippet entity.
-// If the Snippet object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *SnippetMutation) OldLanguage(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldLanguage is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldLanguage requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldLanguage: %w", err)
-	}
-	return oldValue.Language, nil
-}
-
-// ResetLanguage resets all changes to the "language" field.
-func (m *SnippetMutation) ResetLanguage() {
-	m.language = nil
-}
-
 // SetContent sets the "content" field.
 func (m *SnippetMutation) SetContent(s string) {
 	m.content = &s
@@ -290,10 +253,7 @@ func (m *SnippetMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *SnippetMutation) Fields() []string {
-	fields := make([]string, 0, 3)
-	if m.language != nil {
-		fields = append(fields, snippet.FieldLanguage)
-	}
+	fields := make([]string, 0, 2)
 	if m.content != nil {
 		fields = append(fields, snippet.FieldContent)
 	}
@@ -308,8 +268,6 @@ func (m *SnippetMutation) Fields() []string {
 // schema.
 func (m *SnippetMutation) Field(name string) (ent.Value, bool) {
 	switch name {
-	case snippet.FieldLanguage:
-		return m.Language()
 	case snippet.FieldContent:
 		return m.Content()
 	case snippet.FieldCreatedAt:
@@ -323,8 +281,6 @@ func (m *SnippetMutation) Field(name string) (ent.Value, bool) {
 // database failed.
 func (m *SnippetMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
 	switch name {
-	case snippet.FieldLanguage:
-		return m.OldLanguage(ctx)
 	case snippet.FieldContent:
 		return m.OldContent(ctx)
 	case snippet.FieldCreatedAt:
@@ -338,13 +294,6 @@ func (m *SnippetMutation) OldField(ctx context.Context, name string) (ent.Value,
 // type.
 func (m *SnippetMutation) SetField(name string, value ent.Value) error {
 	switch name {
-	case snippet.FieldLanguage:
-		v, ok := value.(string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetLanguage(v)
-		return nil
 	case snippet.FieldContent:
 		v, ok := value.(string)
 		if !ok {
@@ -408,9 +357,6 @@ func (m *SnippetMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *SnippetMutation) ResetField(name string) error {
 	switch name {
-	case snippet.FieldLanguage:
-		m.ResetLanguage()
-		return nil
 	case snippet.FieldContent:
 		m.ResetContent()
 		return nil

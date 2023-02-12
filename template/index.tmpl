@@ -11,23 +11,19 @@
     </head>
     <body>
     <header class="p-4">
-        <h1>Snippeter
-        </h1>
+        <h1>Snippeter</h1>
     </header>
     <main class="p-4">
         <form method="post">
             <div class="mb-3">
-                <label for="language" class="form-label">Language</label>
-                <input name="language" type="text" class="form-control" id="language">
-            </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">Content</label>
+                <label for="content" class="form-label">Type Markdown Here...</label>
                 <textarea name="content" class="form-control" id="content" rows="10"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </main>
     <footer class="p-4">
+        <p>已被使用 {{ .Count }} 次</p>
         <p id="hitokoto">
             :D 获取中...
         </p>

@@ -29,9 +29,6 @@
       "Snippet": {
         "type": "object",
         "properties": {
-          "language": {
-            "type": "string"
-          },
           "content": {
             "type": "string"
           }

@@ -28,20 +28,6 @@ func (su *SnippetUpdate) Where(ps ...predicate.Snippet) *SnippetUpdate {
 	return su
 }
 
-// SetLanguage sets the "language" field.
-func (su *SnippetUpdate) SetLanguage(s string) *SnippetUpdate {
-	su.mutation.SetLanguage(s)
-	return su
-}
-
-// SetNillableLanguage sets the "language" field if the given value is not nil.
-func (su *SnippetUpdate) SetNillableLanguage(s *string) *SnippetUpdate {
-	if s != nil {
-		su.SetLanguage(*s)
-	}
-	return su
-}
-
 // SetContent sets the "content" field.
 func (su *SnippetUpdate) SetContent(s string) *SnippetUpdate {
 	su.mutation.SetContent(s)
@@ -125,9 +111,6 @@ func (su *SnippetUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
-	if value, ok := su.mutation.Language(); ok {
-		_spec.SetField(snippet.FieldLanguage, field.TypeString, value)
-	}
 	if value, ok := su.mutation.Content(); ok {
 		_spec.SetField(snippet.FieldContent, field.TypeString, value)
 	}
@@ -152,20 +135,6 @@ type SnippetUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *SnippetMutation
-}
-
-// SetLanguage sets the "language" field.
-func (suo *SnippetUpdateOne) SetLanguage(s string) *SnippetUpdateOne {
-	suo.mutation.SetLanguage(s)
-	return suo
-}
-
-// SetNillableLanguage sets the "language" field if the given value is not nil.
-func (suo *SnippetUpdateOne) SetNillableLanguage(s *string) *SnippetUpdateOne {
-	if s != nil {
-		suo.SetLanguage(*s)
-	}
-	return suo
 }
 
 // SetContent sets the "content" field.
@@ -274,9 +243,6 @@ func (suo *SnippetUpdateOne) sqlSave(ctx context.Context) (_node *Snippet, err e
 				ps[i](selector)
 			}
 		}
-	}
-	if value, ok := suo.mutation.Language(); ok {
-		_spec.SetField(snippet.FieldLanguage, field.TypeString, value)
 	}
 	if value, ok := suo.mutation.Content(); ok {
 		_spec.SetField(snippet.FieldContent, field.TypeString, value)

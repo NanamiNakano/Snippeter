@@ -8,15 +8,27 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 
+	"github.com/gomarkdown/markdown"
+	"github.com/gomarkdown/markdown/html"
+	"github.com/gomarkdown/markdown/parser"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	_ "github.com/lib/pq"
+	"github.com/microcosm-cc/bluemonday"
 	"github.com/nanaminakano/snippeter/ent"
 )
 
 var client *ent.Client
+
+var (
+	markdownParser   = parser.NewWithExtensions(parser.CommonExtensions)
+	markdownRenderer = html.NewRenderer(html.RendererOptions{
+		Flags: html.CommonFlags | html.HrefTargetBlank,
+	})
+)
 
 //go:embed template/*.tmpl
 var templateFS embed.FS
@@ -70,8 +82,15 @@ func index(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, fmt.Errorf("failed quering data from database: %w", err))
 	}
+
+	count, err := client.Snippet.Query().Count(c.Request().Context())
+	if err != nil {
+		return echo.NewHTTPError(http.StatusInternalServerError, fmt.Errorf("failed quering snippets count: %w", err))
+	}
+
 	return c.Render(http.StatusOK, "index", map[string]any{
 		"Snippets": result,
+		"Count":    count,
 	})
 }
 
@@ -85,17 +104,22 @@ func createSnippet(c echo.Context) error {
 	if err := c.Bind(&snippet); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, fmt.Errorf("bad request: %w", err))
 	}
-	fmt.Println(snippet)
+
+	snippet.Content = strings.ReplaceAll(snippet.Content, "\r\n", "\n")
+
 	result, err := client.Snippet.Create().
 		SetID(uuid.New()).
-		SetLanguage(snippet.Language).
 		SetContent(snippet.Content).
 		Save(c.Request().Context())
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, fmt.Errorf("failed saving data: %w", err))
 	}
-	fmt.Println(result)
+
 	return c.Redirect(http.StatusFound, fmt.Sprintf("/p/%s", result.ID))
+}
+
+type Data struct {
+	Content template.HTML
 }
 
 func getSnippet(c echo.Context) error {
@@ -107,7 +131,12 @@ func getSnippet(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, fmt.Errorf("failed getting snippet: %w", err))
 	}
-	return c.Render(http.StatusOK, "snippet", map[string]any{
-		"Snippet": result,
-	})
+
+	content := bluemonday.UGCPolicy().SanitizeBytes(markdown.ToHTML([]byte(result.Content), nil, markdownRenderer))
+
+	data := Data{
+		Content: template.HTML(content),
+	}
+
+	return c.Render(http.StatusOK, "snippet", &data)
 }

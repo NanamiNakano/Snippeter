@@ -260,12 +260,12 @@ func (sq *SnippetQuery) Clone() *SnippetQuery {
 // Example:
 //
 //	var v []struct {
-//		Language string `json:"language,omitempty"`
+//		Content string `json:"content,omitempty"`
 //		Count int `json:"count,omitempty"`
 //	}
 //
 //	client.Snippet.Query().
-//		GroupBy(snippet.FieldLanguage).
+//		GroupBy(snippet.FieldContent).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
 func (sq *SnippetQuery) GroupBy(field string, fields ...string) *SnippetGroupBy {
@@ -283,11 +283,11 @@ func (sq *SnippetQuery) GroupBy(field string, fields ...string) *SnippetGroupBy 
 // Example:
 //
 //	var v []struct {
-//		Language string `json:"language,omitempty"`
+//		Content string `json:"content,omitempty"`
 //	}
 //
 //	client.Snippet.Query().
-//		Select(snippet.FieldLanguage).
+//		Select(snippet.FieldContent).
 //		Scan(ctx, &v)
 func (sq *SnippetQuery) Select(fields ...string) *SnippetSelect {
 	sq.ctx.Fields = append(sq.ctx.Fields, fields...)

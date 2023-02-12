@@ -11,7 +11,6 @@ var (
 	// SnippetsColumns holds the columns for the "snippets" table.
 	SnippetsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeUUID},
-		{Name: "language", Type: field.TypeString, Default: "plaintext"},
 		{Name: "content", Type: field.TypeString},
 		{Name: "created_at", Type: field.TypeTime},
 	}

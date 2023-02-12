@@ -17,8 +17,6 @@ type Snippet struct {
 	config `json:"-"`
 	// ID of the ent.
 	ID uuid.UUID `json:"id,omitempty"`
-	// Language holds the value of the "language" field.
-	Language string `json:"language,omitempty"`
 	// Content holds the value of the "content" field.
 	Content string `json:"content,omitempty"`
 	// CreatedAt holds the value of the "created_at" field.
@@ -30,7 +28,7 @@ func (*Snippet) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case snippet.FieldLanguage, snippet.FieldContent:
+		case snippet.FieldContent:
 			values[i] = new(sql.NullString)
 		case snippet.FieldCreatedAt:
 			values[i] = new(sql.NullTime)
@@ -56,12 +54,6 @@ func (s *Snippet) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field id", values[i])
 			} else if value != nil {
 				s.ID = *value
-			}
-		case snippet.FieldLanguage:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field language", values[i])
-			} else if value.Valid {
-				s.Language = value.String
 			}
 		case snippet.FieldContent:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -103,9 +95,6 @@ func (s *Snippet) String() string {
 	var builder strings.Builder
 	builder.WriteString("Snippet(")
 	builder.WriteString(fmt.Sprintf("id=%v, ", s.ID))
-	builder.WriteString("language=")
-	builder.WriteString(s.Language)
-	builder.WriteString(", ")
 	builder.WriteString("content=")
 	builder.WriteString(s.Content)
 	builder.WriteString(", ")

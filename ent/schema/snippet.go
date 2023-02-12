@@ -16,7 +16,6 @@ type Snippet struct {
 func (Snippet) Fields() []ent.Field {
 	return []ent.Field{
 		field.UUID("id", uuid.New()),
-		field.String("language").Default("plaintext"),
 		field.String("content").NotEmpty(),
 		field.Time("created_at").Default(time.Now),
 	}

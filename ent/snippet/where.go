@@ -55,11 +55,6 @@ func IDLTE(id uuid.UUID) predicate.Snippet {
 	return predicate.Snippet(sql.FieldLTE(FieldID, id))
 }
 
-// Language applies equality check predicate on the "language" field. It's identical to LanguageEQ.
-func Language(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldEQ(FieldLanguage, v))
-}
-
 // Content applies equality check predicate on the "content" field. It's identical to ContentEQ.
 func Content(v string) predicate.Snippet {
 	return predicate.Snippet(sql.FieldEQ(FieldContent, v))
@@ -68,71 +63,6 @@ func Content(v string) predicate.Snippet {
 // CreatedAt applies equality check predicate on the "created_at" field. It's identical to CreatedAtEQ.
 func CreatedAt(v time.Time) predicate.Snippet {
 	return predicate.Snippet(sql.FieldEQ(FieldCreatedAt, v))
-}
-
-// LanguageEQ applies the EQ predicate on the "language" field.
-func LanguageEQ(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldEQ(FieldLanguage, v))
-}
-
-// LanguageNEQ applies the NEQ predicate on the "language" field.
-func LanguageNEQ(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldNEQ(FieldLanguage, v))
-}
-
-// LanguageIn applies the In predicate on the "language" field.
-func LanguageIn(vs ...string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldIn(FieldLanguage, vs...))
-}
-
-// LanguageNotIn applies the NotIn predicate on the "language" field.
-func LanguageNotIn(vs ...string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldNotIn(FieldLanguage, vs...))
-}
-
-// LanguageGT applies the GT predicate on the "language" field.
-func LanguageGT(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldGT(FieldLanguage, v))
-}
-
-// LanguageGTE applies the GTE predicate on the "language" field.
-func LanguageGTE(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldGTE(FieldLanguage, v))
-}
-
-// LanguageLT applies the LT predicate on the "language" field.
-func LanguageLT(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldLT(FieldLanguage, v))
-}
-
-// LanguageLTE applies the LTE predicate on the "language" field.
-func LanguageLTE(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldLTE(FieldLanguage, v))
-}
-
-// LanguageContains applies the Contains predicate on the "language" field.
-func LanguageContains(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldContains(FieldLanguage, v))
-}
-
-// LanguageHasPrefix applies the HasPrefix predicate on the "language" field.
-func LanguageHasPrefix(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldHasPrefix(FieldLanguage, v))
-}
-
-// LanguageHasSuffix applies the HasSuffix predicate on the "language" field.
-func LanguageHasSuffix(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldHasSuffix(FieldLanguage, v))
-}
-
-// LanguageEqualFold applies the EqualFold predicate on the "language" field.
-func LanguageEqualFold(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldEqualFold(FieldLanguage, v))
-}
-
-// LanguageContainsFold applies the ContainsFold predicate on the "language" field.
-func LanguageContainsFold(v string) predicate.Snippet {
-	return predicate.Snippet(sql.FieldContainsFold(FieldLanguage, v))
 }
 
 // ContentEQ applies the EQ predicate on the "content" field.

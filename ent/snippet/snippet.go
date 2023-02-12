@@ -11,8 +11,6 @@ const (
 	Label = "snippet"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
-	// FieldLanguage holds the string denoting the language field in the database.
-	FieldLanguage = "language"
 	// FieldContent holds the string denoting the content field in the database.
 	FieldContent = "content"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
@@ -24,7 +22,6 @@ const (
 // Columns holds all SQL columns for snippet fields.
 var Columns = []string{
 	FieldID,
-	FieldLanguage,
 	FieldContent,
 	FieldCreatedAt,
 }
@@ -40,8 +37,6 @@ func ValidColumn(column string) bool {
 }
 
 var (
-	// DefaultLanguage holds the default value on creation for the "language" field.
-	DefaultLanguage string
 	// ContentValidator is a validator for the "content" field. It is called by the builders before save.
 	ContentValidator func(string) error
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.
