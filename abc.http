@@ -1,0 +1,10 @@
+GET https://baidu.com
+
+###
+POST localhost
+User-Agent: Mozilla ABC
+Content-Type: application/json
+
+{
+  "1": "1"
+}

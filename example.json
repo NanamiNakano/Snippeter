@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Snippeter",
+    "description": "Service for sharing code snippets",
+    "contact": {
+      "name": "NanamiNakano",
+      "url": "https://www.notkiller.moe",
+      "email": "thynanami@foxmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost",
+      "description": "Dev"
+    },
+    {
+      "url": "https://snippets.notkiller.moe",
+      "description": "Production"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Snippet": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Main Web UI",
+        "responses": {
+          "200": {
+            "description": "Web UI",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new snippet",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Snippet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "302": {
+            "description": "Redirect to the snippet",
+            "headers": {
+              "Location": {
+                "description": "Snippet's location",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/p/{id}": {
+      "get": {
+        "description": "Snippet url",
+        "responses": {
+          "200": {
+            "description": "Snippet",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Snippet not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

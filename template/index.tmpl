@@ -1,0 +1,42 @@
+{{ define "index" }}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Snippeter</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+              integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    </head>
+    <body>
+    <header class="p-4">
+        <h1>Snippeter
+        </h1>
+    </header>
+    <main class="p-4">
+        <form method="post">
+            <div class="mb-3">
+                <label for="language" class="form-label">Language</label>
+                <input name="language" type="text" class="form-control" id="language">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea name="content" class="form-control" id="content" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </main>
+    <footer class="p-4">
+        <p id="hitokoto">
+            :D 获取中...
+        </p>
+        <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+        <span>Develop by <a href="https://www.notkiller.moe/" target="_blank">Nanami</a>.</span>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+            integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+    </html>
+{{ end }}
