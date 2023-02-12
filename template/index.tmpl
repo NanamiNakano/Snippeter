@@ -11,7 +11,10 @@
     </head>
     <body>
     <header class="p-4">
-        <h1>Snippeter</h1>
+        <h1>Snippeter
+            <iframe src="https://ghbtns.com/github-btn.html?user=nanaminakano&repo=snippeter&type=star&count=true"
+                    frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+        </h1>
     </header>
     <main class="p-4">
         <form method="post">
@@ -22,13 +25,15 @@
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </main>
-    <footer class="p-4">
-        <p>已被使用 {{ .Count }} 次</p>
-        <p id="hitokoto">
-            :D 获取中...
-        </p>
-        <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-        <span>Develop by <a href="https://www.notkiller.moe/" target="_blank">Nanami</a>.</span>
+    <footer class="fixed-bottom">
+        <div class="p-2 bg-light border">
+            <div>已被使用 {{ .Count }} 次</div>
+            <div id="hitokoto" >
+                :D 获取中...
+            </div>
+            <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+            <div>Develop by <a href="https://www.notkiller.moe/" target="_blank">Nanami</a>.</div>
+        </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
             integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="

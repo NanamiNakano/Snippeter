@@ -8,27 +8,39 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
               integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
               crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css" integrity="sha512-bm684OXnsiNuQSyrxuuwo4PHqr3OzxPpXyhT66DA/fhl73e1JmBxRKGnO/nRwWvOZxJLRCmNH7FII+Yn1JNPmg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+              integrity="sha512-bm684OXnsiNuQSyrxuuwo4PHqr3OzxPpXyhT66DA/fhl73e1JmBxRKGnO/nRwWvOZxJLRCmNH7FII+Yn1JNPmg=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
+              integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body>
     <header class="p-4">
-        <h1><a href="/" style="text-decoration: none; color: black;">Snippeter</a></h1>
+        <h1><a href="/" style="text-decoration: none; color: black;">Snippeter</a>
+            <iframe src="https://ghbtns.com/github-btn.html?user=nanaminakano&repo=snippeter&type=star&count=true"
+                    frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+        </h1>
     </header>
     <main class="p-4">
         <article class="markdown-body">{{ .Content }}</article>
     </main>
-    <footer class="p-4">
-        <p id="hitokoto">
-            :D 获取中...
-        </p>
-        <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-        <span>Develop by <a href="https://www.notkiller.moe/" target="_blank">Nanami</a>.</span>
+    <footer class="fixed-bottom">
+        <div class="p-2 bg-light border">
+            <div id="hitokoto">
+                :D 获取中...
+            </div>
+            <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+            <div>Develop by <a href="https://www.notkiller.moe/" target="_blank">Nanami</a>.</div>
+        </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
             integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+            integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>hljs.highlightAll();</script>
     </body>
     </html>
