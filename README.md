@@ -8,4 +8,4 @@ Simple Snippet Sharing Service
 3. Run "go build".
 4. Run the executable file you get.
 
-By default, it will listen on port 80 and use PostgreSQL.
+By default, it will listen on port 8080 and use PostgreSQL.
