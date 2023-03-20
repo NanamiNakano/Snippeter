@@ -5,12 +5,12 @@ package enttest
 import (
 	"context"
 
-	"github.com/nanaminakano/snippeter/ent"
+	"github.com/nanaminakano/snippeter/models/ent"
 	// required by schema hooks.
-	_ "github.com/nanaminakano/snippeter/ent/runtime"
+	_ "github.com/nanaminakano/snippeter/models/ent/runtime"
 
 	"entgo.io/ent/dialect/sql/schema"
-	"github.com/nanaminakano/snippeter/ent/migrate"
+	"github.com/nanaminakano/snippeter/models/ent/migrate"
 )
 
 type (

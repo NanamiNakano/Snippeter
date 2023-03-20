@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/nanaminakano/snippeter/ent"
+	"github.com/nanaminakano/snippeter/models/ent"
 )
 
 // The SnippetFunc type is an adapter to allow the use of ordinary

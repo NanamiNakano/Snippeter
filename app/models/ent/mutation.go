@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/nanaminakano/snippeter/ent/predicate"
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/predicate"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"

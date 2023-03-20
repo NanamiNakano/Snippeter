@@ -5,8 +5,8 @@ package ent
 import (
 	"time"
 
-	"github.com/nanaminakano/snippeter/ent/schema"
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/schema"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 )
 
 // The init function reads all schema descriptors with runtime code

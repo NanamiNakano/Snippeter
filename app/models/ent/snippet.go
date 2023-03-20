@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent/dialect/sql"
 	"github.com/google/uuid"
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 )
 
 // Snippet is the model entity for the Snippet schema.

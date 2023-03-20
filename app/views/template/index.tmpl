@@ -1,0 +1,82 @@
+{{ define "index" }}
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Snippeter</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+        <link rel="stylesheet" href="https://contents.notkiller.moe/assets/css/Footer-Basic-icons.css">
+        <link rel="stylesheet" href="https://contents.notkiller.moe/assets/css/Modern-Contact-Form.css">
+        <link rel="stylesheet" href="https://contents.notkiller.moe/assets/css/Pretty-Header-.css">
+    </head>
+
+    <body>
+    <nav class="navbar navbar-light navbar-expand-md custom-header">
+        <div class="container-fluid">
+            <div>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbar-collapse"><span
+                            class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="navbar-nav links">
+                    <li class="nav-item"><a class="nav-link" href="/">Snippeter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://blog.thynanami.com">Nanami's Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/NanamiNakano/Snippeter">Github</a>
+                    </li>
+                    <li class="nav-item"></li>
+                </ul>
+                <ul class="navbar-nav ms-auto"></ul>
+            </div>
+        </div>
+    </nav>
+    <section class="p-4">
+        <div class="container modern-form">
+            <div class="text-center">
+                <h4 style="color: #212529;font-size: 45px;">Create a snippet</h4>
+            </div>
+            <div class="modern-form__form-container">
+                <form method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="modern-form__form-group--padding-t form-group mb-3">
+                            <textarea name="content" id="content" class="form-control input modern-form__form-control--textarea"
+                                      placeholder="Type markdown here..."></textarea>
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-primary submit-now" type="submit">Submit Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="fixed-bottom">
+        <div class="container text-muted py-4 py-lg-5">
+            <div class="p-4">
+                <div>已被使用 {{ .Count }} 次</div>
+                <div id="hitokoto">
+                    :D 获取中...
+                </div>
+                <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+                <div>Develop by <a href="https://blog.thynanami.com/" target="_blank">「The Nanami」</a>.</div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+            integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+
+    </html>
+{{ end }}

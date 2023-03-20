@@ -11,7 +11,7 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 )
 
 // ent aliases to avoid import conflicts in user's code.

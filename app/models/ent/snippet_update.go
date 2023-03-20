@@ -11,8 +11,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/nanaminakano/snippeter/ent/predicate"
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/predicate"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 )
 
 // SnippetUpdate is the builder for updating Snippet entities.

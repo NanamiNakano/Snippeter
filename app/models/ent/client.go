@@ -9,9 +9,9 @@ import (
 	"log"
 
 	"github.com/google/uuid"
-	"github.com/nanaminakano/snippeter/ent/migrate"
+	"github.com/nanaminakano/snippeter/models/ent/migrate"
 
-	"github.com/nanaminakano/snippeter/ent/snippet"
+	"github.com/nanaminakano/snippeter/models/ent/snippet"
 
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"
